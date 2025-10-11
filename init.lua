@@ -20,15 +20,15 @@ If you experience any errors while trying to install kickstart, run `:checkhealt
 --]]
 
 -- gets the options module - ~/.config/nvim/lua/options/
-require 'options'
+require 'custom.options'
 -- gets the keymaps module - ~/.config/nvim/lua/keymaps/
-require 'keymaps'
+require 'custom.keymaps'
 -- gets the autocommand module - ~/.config/nvim/lua/autocommands/
-require 'autocommands'
+require 'custom.autocommands'
 -- installation of lazy.nvim package manager - ~/.config/nvim/lua/lazy_package/
 --  To check the current status of your plugins, run
 --    :Lazy
-require 'lazy_package'
+require 'package_managment.lazy_package'
 
 -- plugins install start
 -- NOTE: Here is where you install your plugins.
@@ -781,7 +781,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`

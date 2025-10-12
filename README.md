@@ -64,8 +64,10 @@ You likely want to remove `lazy-lock.json` from your fork's `.gitignore` file
 too - it's ignored in the kickstart repo to make maintenance easier, but it's
 [recommended to track it in version control](https://lazy.folke.io/usage/lockfile).
 
+#### Details About The Lazy Lock File
+
 <details>
-<summary>Details about the lazy-lock.json</summary>
+<summary>lazy-lock.json details</summary>
 
 ```
 After every update, the local lockfile (lazy-lock.json) is updated with the installed revisions. It is recommended

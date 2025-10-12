@@ -64,6 +64,8 @@ You likely want to remove `lazy-lock.json` from your fork's `.gitignore` file
 too - it's ignored in the kickstart repo to make maintenance easier, but it's
 [recommended to track it in version control](https://lazy.folke.io/usage/lockfile).
 
+<details>
+<summary>Details about the lazy-lock.json</summary>
 ```
 After every update, the local lockfile (lazy-lock.json) is updated with the installed revisions. It is recommended
 to have this file under version control.
@@ -71,6 +73,7 @@ If you use your Neovim config on multiple machines, using the lockfile, you can 
 of every plugin is installed.
 If you are on another machine, you can do :Lazy restore, to update all your plugins to the version from the lockfile.
 ```
+</details>
 
 #### Clone kickstart.nvim
 

@@ -35,6 +35,8 @@ return { -- Autoformat
       dockerfile = { 'dockerfile-language-server' },
       json = { 'prettier' },
       yaml = { 'prettier' },
+      markdown = { 'prettier' },
+      html = { 'prettier' },
       -- it can be tough to find out what specifically is the filetype for a file
       -- but we actually can do so using :set filetype?
 

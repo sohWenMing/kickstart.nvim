@@ -1,4 +1,9 @@
--- Set <space> as the leader key
+-- Use 4 spaces for indentation
+vim.opt.shiftwidth = 4 -- Number of spaces for each indentation level
+vim.opt.tabstop = 4 -- Number of spaces a <Tab> in the file counts for
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.autoindent = true -- Keep this on! It's what copies indent to new lines- Set <space> as the leader key
+
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '

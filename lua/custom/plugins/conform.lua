@@ -13,7 +13,8 @@ return { -- Autoformat
     },
   },
   opts = {
-    notify_on_error = false,
+    notify_on_error = true,
+    -- if there is an error, then show why, based on what the formatter is saying
     format_on_save = function(bufnr)
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
@@ -31,6 +32,12 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { 'stylua' },
       go = { 'goimports', 'gofmt' },
+      dockerfile = { 'dockerfile-language-server' },
+      json = { 'prettier' },
+      yaml = { 'prettier' },
+      -- it can be tough to find out what specifically is the filetype for a file
+      -- but we actually can do so using :set filetype?
+
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --

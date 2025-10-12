@@ -207,6 +207,59 @@ return {
           },
         },
       },
+      dockerls = {
+        cmd = { 'docker-langserver', '--stdio' },
+        filetypes = { 'dockerfile' },
+        root_dir = require('lspconfig.util').root_pattern('Dockerfile', '.git'),
+        settings = {},
+      },
+      yamlls = {
+        -- Have to add this for yamlls to understand that we support line folding
+        capabilities = {
+          textDocument = {
+            foldingRange = {
+              dynamicRegistration = false,
+              lineFoldingOnly = true,
+            },
+          },
+        },
+        -- lazy-load schemastore when needed
+        before_init = function(_, new_config)
+          new_config.settings.yaml.schemas = vim.tbl_deep_extend('force', new_config.settings.yaml.schemas or {}, require('schemastore').yaml.schemas())
+        end,
+        settings = {
+          redhat = { telemetry = { enabled = false } },
+          yaml = {
+            keyOrdering = false,
+            format = {
+              enable = true,
+            },
+            validate = true,
+            schemaStore = {
+              -- Must disable built-in schemaStore support to use
+              -- schemas from SchemaStore.nvim plugin
+              enable = false,
+              -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+              url = '',
+            },
+          },
+        },
+      },
+      jsonls = {
+        -- lazy-load schemastore when needed
+        before_init = function(_, new_config)
+          new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+          vim.list_extend(new_config.settings.json.schemas, require('schemastore').json.schemas())
+        end,
+        settings = {
+          json = {
+            format = {
+              enable = true,
+            },
+            validate = { enable = true },
+          },
+        },
+      },
       -- pyright = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -250,6 +303,7 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
+      'prettier', -- used to format json and yaml
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

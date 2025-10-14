@@ -29,6 +29,15 @@ require 'custom.autocommands'
 --  To check the current status of your plugins, run
 --    :Lazy
 require 'package_managment.lazy_package'
+-- here - what we're doing is running the init.lua which is in folder
+-- package_managemement/lazy_package
+--
+
+-- it's important to underestand here that when we require 'lazy' here
+-- we're looking in the runtimpath, to find the first directory or file that has
+-- "lazy in it" and then we're getting what ever is in there so we can use it
+-- the tldr is that there is a setup function, where which allows us to pass in a
+-- table which ww're using 'plugins' to achieve
 require('lazy').setup(require 'plugins', {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

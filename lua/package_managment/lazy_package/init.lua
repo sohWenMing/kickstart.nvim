@@ -19,3 +19,7 @@ local rtp = vim.opt.rtp
 -- we are prepending this to the run time path so that it gets evaluated first,
 -- because we are going to need it later
 rtp:prepend(lazypath)
+
+-- really, all we're trying to do here, is to prepend the lazypath (if it exists)
+-- to the runtimepath. if it doesn't yet exist, then we grab the repo, then append
+-- to the runtimepath
